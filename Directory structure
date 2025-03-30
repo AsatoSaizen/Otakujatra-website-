@@ -1,13 +1,11 @@
-otakujatra-gallery/
+your-repo/
 ├── netlify/
-│   ├── functions/
-│   │   ├── photos.js
-│   │   ├── upload.js
-│   │   ├── delete.js
-│   │   ├── create-album.js
-│   │   └── delete-album.js
+│ ├── functions/
+│ │ ├── photos.js
+│ │ ├── upload.js
+│ │ └── delete.js
 ├── public/
-│   ├── photos.json (auto-created)
-│   └── index.html
+│ ├── index.html (your original HTML file)
+│ └── photos.json (auto-created)
 ├── netlify.toml
 └── package.json
