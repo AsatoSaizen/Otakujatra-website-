@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OtakuJatra - Repository Explorer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Rickoto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background: #0D0A13;
+            color: #E6E1E6;
+            min-height: 100vh;
+            line-height: 1.5;
+            transition: background 0.3s, color 0.3s;
+        }
+        /* [Keep all your existing CSS styles exactly as they are] */
+        /* They are perfect and don't need any changes */
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <div class="nav-title">OtakuJatra</div>
+            <a href="https://github.com/AsatoSaizen" target="_blank" class="nav-icon" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        
+        <div class="menu-btn" id="menuBtn">
+            <div class="menu-btn__burger"></div>
+        </div>
+        
+        <div class="menu-dropdown" id="menuDropdown">
+            <a href="#">Guide</a>
+            <hr>
+            <a href="#" id="devModeToggle">Developer Mode</a>
+            
+            <div class="theme-options">
+                <h4>Theme Color</h4>
+                <div class="theme-colors">
+                    <div class="theme-color" style="background: #1a237e;" data-theme="dark-blue" title="Dark Blue"></div>
+                    <div class="theme-color" style="background: #0288d1;" data-theme="sky-blue" title="Sky Blue"></div>
+                    <div class="theme-color" style="background: #2e7d32;" data-theme="light-green" title="Light Green"></div>
+                    <div class="theme-color" style="background: #e65100;" data-theme="light-orange" title="Light Orange"></div>
+                    <div class="theme-color" style="background: #ad1457;" data-theme="pink" title="Pink"></div>
+                </div>
+                
+                <div class="theme-mode" id="themeMode">
+                    <div class="theme-mode-icon">
+                        <i class="fas fa-sun sun"></i>
+                        <i class="fas fa-moon moon"></i>
+                    </div>
+                    <span class="theme-mode-text">Dark Mode</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="big-center-logo">
+        <a href="https://youtu.be/RLw1-xyTvTY" target="_blank">
+            <img src="https://scontent.cdninstagram.com/v/t51.2885-19/453472103_475236188454123_5696925704064906611_n.jpg?stp=dst-jpg_s160x160_tt6&_nc_cat=105&ccb=1-7&_nc_sid=bf7eb4&_nc_ohc=ktFnXQS_QUwQ7kNvgE8WmWL&_nc_oc=Adl-_dG3YVO5Syo_4ZRQpU7jkBZR89HMUO2O6VT7K5FcJZ-v4nCdqdLgU58R0x6e8_6e3_fQmKLcwT7LxQ-xBMX4&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&oh=00_AYEWBLstlmJU0N-JsTVH7xGzxnf1F6LRItuEu4VWmC-DXA&oe=67ED719E" alt="Clickable Logo">
+            <div class="logo-text">OtakuJatra</div>
+        </a>
+        <div class="intro-text">
+            "Nepal's Biggest Pop-Culture Convention
+By the Fans, For the Fans!! ✨"
+        </div>
+        <div class="social-buttons">
+            <a href="https://www.instagram.com/otakujatra?igsh=MWl6bzZvM3Q3aWl1bg==" target="_blank" class="instagram-btn">
+                <i class="fab fa-instagram"></i> Follow
+            </a>
+            <a href="https://discord.gg/weRKEBMU" target="_blank" class="discord-btn">
+                <i class="fab fa-discord"></i> Join Server
+            </a>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature-card clickable-card" id="galleryCard">
+            <i class="fas fa-images gallery-icon"></i>
+            <h3>Gallery</h3>
+            <p>Browse through our collection of photos from past OtakuJatra events and gatherings.</p>
+        </div>
+        <a href="https://anilist.co/user/AsatoSaizen/stats/anime/overview" target="_blank" class="feature-card clickable-card">
+            <i class="fas fa-chart-pie feature-icon"></i>
+            <h3>Stats</h3>
+            <p>View statistics and insights about our community and events</p>
+        </a>
+        <div class="feature-card clickable-card" id="friendsCard">
+            <i class="fas fa-users feature-icon"></i>
+            <h3>Contributor</h3>
+            <p>OtakuJatra very own unpaid labour</p>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="profile-panel" id="profilePanel">
+        <div class="close-panel" id="closePanel">&times;</div>
+        <h2>Contributor</h2>
+        
+        <div class="profile-card" onclick="window.open('https://www.instagram.com/asatosaizen?igsh=eHN6eXl6YnJrMW43')">
+            <img src="https://avatars.githubusercontent.com/u/193106854?u=af480dbba8bdb36ae5305b6826df8910eebe0bf6&v=4" alt="Asato Saizen">
+            <div class="profile-info">
+                <h3>Website Maintainer</h3>
+                <span><i class="fab fa-instagram"></i> asatosaizen</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-panel" id="galleryPanel">
+        <div class="close-panel" id="closeGalleryPanel">&times;</div>
+        <h2>Gallery</h2>
+        
+        <div class="album-grid" id="albumGrid">
+            <div class="album-card" data-album="event1">
+                <i class="fas fa-images album-icon"></i>
+                <div class="album-title">Event 2023</div>
+                <button class="delete-album-btn" style="display: none;">×</button>
+            </div>
+            <div class="album-card" data-album="event2">
+                <i class="fas fa-images album-icon"></i>
+                <div class="album-title">Cosplay Contest</div>
+                <button class="delete-album-btn" style="display: none;">×</button>
+            </div>
+            <div class="album-card" data-album="event3">
+                <i class="fas fa-images album-icon"></i>
+                <div class="album-title">Meetup 2024</div>
+                <button class="delete-album-btn" style="display: none;">×</button>
+            </div>
+        </div>
+        
+        <div class="photos-container" id="photosContainer">
+            <div class="back-to-albums" id="backToAlbums">
+                <i class="fas fa-arrow-left"></i> Back to Albums
+            </div>
+            <div class="photo-grid" id="photoGrid"></div>
+        </div>
+        
+        <div class="dev-tools" id="devTools" style="display: none;">
+            <h3>Developer Tools</h3>
+            
+            <div class="upload-area" id="uploadArea">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <div class="upload-text">Drag & drop photos here or click to browse</div>
+                <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+            </div>
+            
+            <div class="form-group">
+                <label for="albumName">Album Name</label>
+                <input type="text" id="albumName" class="form-control" placeholder="Enter album name">
+            </div>
+            
+            <div class="form-group">
+                <label for="albumDescription">Album Description</label>
+                <textarea id="albumDescription" class="form-control" rows="3" placeholder="Enter album description"></textarea>
+            </div>
+            
+            <button class="btn" id="createAlbumBtn">Create Album</button>
+            <button class="btn btn-secondary" id="uploadPhotosBtn" style="display: none;">Upload Photos</button>
+        </div>
+    </div>
+
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h3>Enter Developer Password</h3>
+            <input type="password" class="password-input" id="passwordInput" placeholder="Enter password">
+            <div class="password-error" id="passwordError"></div>
+            <button class="btn" id="submitPassword">Submit</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 all rights reserved to Asato Saizen.</p>
+    </footer>
+
+    <script>
+        // Menu Toggle Functionality
+        const menuBtn = document.getElementById('menuBtn');
+        const menuDropdown = document.getElementById('menuDropdown');
+        
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('open');
+            menuDropdown.classList.toggle('active');
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
+                menuBtn.classList.remove('open');
+                menuDropdown.classList.remove('active');
+            }
+        });
+
+        // Profile Panel
+        const friendsCard = document.getElementById('friendsCard');
+        const profilePanel = document.getElementById('profilePanel');
+        const closePanel = document.getElementById('closePanel');
+        const overlay = document.getElementById('overlay');
+        
+        friendsCard.addEventListener('click', () => {
+            profilePanel.classList.add('active');
+            overlay.classList.add('active');
+        });
+        
+        closePanel.addEventListener('click', () => {
+            profilePanel.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        
+        overlay.addEventListener('click', () => {
+            profilePanel.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        
+        // Gallery Panel
+        const galleryCard = document.getElementById('galleryCard');
+        const galleryPanel = document.getElementById('galleryPanel');
+        const closeGalleryPanel = document.getElementById('closeGalleryPanel');
+        const backToAlbums = document.getElementById('backToAlbums');
+        const albumGrid = document.getElementById('albumGrid');
+        const photosContainer = document.getElementById('photosContainer');
+        const photoGrid = document.getElementById('photoGrid');
+        
+        galleryCard.addEventListener('click', () => {
+            galleryPanel.classList.add('active');
+            overlay.classList.add('active');
+        });
+        
+        closeGalleryPanel.addEventListener('click', () => {
+            galleryPanel.classList.remove('active');
+            overlay.classList.remove('active');
+            photosContainer.classList.remove('active');
+        });
+
+        // Photo Data Management
+        let currentAlbumId = '';
+        
+        async function loadPhotoData() {
+            try {
+                const response = await fetch('/.netlify/functions/photos');
+                if (!response.ok) throw new Error('Failed to load photos');
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading photos:', error);
+                return {
+                    event1: [
+                        "https://via.placeholder.com/400x400/FF2D74/FFFFFF?text=Event+1",
+                        "https://via.placeholder.com/400x400/FF2D74/FFFFFF?text=Event+2"
+                    ],
+                    event2: [
+                        "https://via.placeholder.com/400x400/03a9f4/FFFFFF?text=Cosplay+1",
+                        "https://via.placeholder.com/400x400/03a9f4/FFFFFF?text=Cosplay+2"
+                    ]
+                };
+            }
+        }
+
+        async function showPhotos(albumId) {
+            photoGrid.innerHTML = '';
+            currentAlbumId = albumId;
+            
+            const photoData = await loadPhotoData();
+            
+            if (photoData[albumId]) {
+                photoData[albumId].forEach((photoUrl, index) => {
+                    const photoItem = document.createElement('div');
+                    photoItem.className = 'photo-item';
+                    photoItem.innerHTML = `
+                        <img src="${photoUrl}" alt="Gallery photo">
+                        <button class="delete-photo-btn" data-index="${index}" style="display: none;">×</button>
+                    `;
+                    photoGrid.appendChild(photoItem);
+                    
+                    const deleteBtn = photoItem.querySelector('.delete-photo-btn');
+                    deleteBtn.addEventListener('click', async (e) => {
+                        e.stopPropagation();
+                        const index = parseInt(deleteBtn.getAttribute('data-index'));
+                        if (confirm('Are you sure you want to delete this photo?')) {
+                            try {
+                                const response = await fetch('/.netlify/functions/delete', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        albumId: currentAlbumId,
+                                        photoIndex: index
+                                    })
+                                });
+                                
+                                if (!response.ok) throw new Error('Delete failed');
+                                
+                                photoItem.remove();
+                                
+                                document.querySelectorAll('.delete-photo-btn').forEach((btn, i) => {
+                                    btn.setAttribute('data-index', i);
+                                });
+                            } catch (error) {
+                                console.error('Delete error:', error);
+                                alert('Failed to delete photo');
+                            }
+                        }
+                    });
+                });
+            }
+            
+            if (isDeveloperMode) {
+                document.querySelectorAll('.delete-photo-btn').forEach(btn => {
+                    btn.style.display = 'flex';
+                });
+            }
+            
+            photosContainer.classList.add('active');
+        }
+
+        function setupAlbumClickHandlers() {
+            document.querySelectorAll('.album-card').forEach(album => {
+                album.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('delete-album-btn')) return;
+                    
+                    const albumId = album.getAttribute('data-album');
+                    showPhotos(albumId);
+                });
+            });
+        }
+        
+        setupAlbumClickHandlers();
+        
+        backToAlbums.addEventListener('click', () => {
+            photosContainer.classList.remove('active');
+        });
+
+        // Developer Mode
+        const devModeToggle = document.getElementById('devModeToggle');
+        const passwordModal = document.getElementById('passwordModal');
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordError = document.getElementById('passwordError');
+        const submitPassword = document.getElementById('submitPassword');
+        const devTools = document.getElementById('devTools');
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const albumName = document.getElementById('albumName');
+        const albumDescription = document.getElementById('albumDescription');
+        const createAlbumBtn = document.getElementById('createAlbumBtn');
+        const uploadPhotosBtn = document.getElementById('uploadPhotosBtn');
+        
+        let isDeveloperMode = false;
+        let selectedFiles = [];
+        
+        devModeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (isDeveloperMode) {
+                disableDeveloperMode();
+            } else {
+                passwordModal.classList.add('active');
+            }
+        });
+        
+        submitPassword.addEventListener('click', () => {
+            if (passwordInput.value === '865067') {
+                isDeveloperMode = true;
+                passwordModal.classList.remove('active');
+                devTools.style.display = 'block';
+                passwordError.textContent = '';
+                passwordInput.value = '';
+                
+                document.querySelectorAll('.delete-album-btn').forEach(btn => {
+                    btn.style.display = 'flex';
+                });
+                
+                const originalText = devModeToggle.textContent;
+                devModeToggle.textContent = 'Developer Mode (ON)';
+                setTimeout(() => {
+                    devModeToggle.textContent = originalText;
+                }, 2000);
+            } else {
+                passwordError.textContent = 'Incorrect password. Try again.';
+            }
+        });
+        
+        function disableDeveloperMode() {
+            isDeveloperMode = false;
+            devTools.style.display = 'none';
+            
+            document.querySelectorAll('.delete-album-btn, .delete-photo-btn').forEach(btn => {
+                btn.style.display = 'none';
+            });
+            
+            const originalText = devModeToggle.textContent;
+            devModeToggle.textContent = 'Developer Mode (OFF)';
+            setTimeout(() => {
+                devModeToggle.textContent = originalText;
+            }, 2000);
+        }
+        
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', (e) => {
+            selectedFiles = Array.from(e.target.files);
+            if (selectedFiles.length > 0) {
+                uploadPhotosBtn.style.display = 'block';
+            }
+        });
+        
+        createAlbumBtn.addEventListener('click', async () => {
+            const name = albumName.value.trim();
+            const description = albumDescription.value.trim();
+            
+            if (name) {
+                const albumId = 'album-' + Date.now();
+                
+                try {
+                    const response = await fetch('/.netlify/functions/create-album', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            albumId,
+                            name,
+                            description
+                        })
+                    });
+                    
+                    if (!response.ok) throw new Error('Album creation failed');
+                    
+                    const albumCard = document.createElement('div');
+                    albumCard.className = 'album-card';
+                    albumCard.setAttribute('data-album', albumId);
+                    albumCard.innerHTML = `
+                        <i class="fas fa-images album-icon"></i>
+                        <div class="album-title">${name}</div>
+                        <button class="delete-album-btn" style="display: ${isDeveloperMode ? 'flex' : 'none'};">×</button>
+                    `;
+                    albumGrid.appendChild(albumCard);
+                    
+                    albumCard.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('delete-album-btn')) return;
+                        currentAlbumId = albumId;
+                        showPhotos(albumId);
+                    });
+                    
+                    const deleteBtn = albumCard.querySelector('.delete-album-btn');
+                    deleteBtn.addEventListener('click', async (e) => {
+                        e.stopPropagation();
+                        if (confirm(`Are you sure you want to delete album "${name}"?`)) {
+                            try {
+                                const response = await fetch('/.netlify/functions/delete-album', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({ albumId })
+                                });
+                                
+                                if (!response.ok) throw new Error('Album deletion failed');
+                                
+                                albumCard.remove();
+                                
+                                if (currentAlbumId === albumId) {
+                                    photosContainer.classList.remove('active');
+                                }
+                            } catch (error) {
+                                console.error('Album deletion error:', error);
+                                alert('Failed to delete album');
+                            }
+                        }
+                    });
+                    
+                    albumName.value = '';
+                    albumDescription.value = '';
+                    
+                    alert(`Album "${name}" created successfully!`);
+                } catch (error) {
+                    console.error('Album creation error:', error);
+                    alert('Failed to create album');
+                }
+            } else {
+                alert('Please enter an album name');
+            }
+        });
+        
+        uploadPhotosBtn.addEventListener('click', async () => {
+            if (!currentAlbumId) {
+                alert('Please select an album first');
+                return;
+            }
+            
+            if (selectedFiles.length === 0) {
+                alert('Please select photos to upload');
+                return;
+            }
+            
+            try {
+                const filePromises = selectedFiles.map(file => {
+                    return new Promise((resolve) => {
+                        const reader = new FileReader();
+                        reader.onload = (e) => resolve({
+                            url: e.target.result,
+                            name: file.name,
+                            type: file.type
+                        });
+                        reader.readAsDataURL(file);
+                    });
+                });
+                
+                const photos = await Promise.all(filePromises);
+                
+                const response = await fetch('/.netlify/functions/upload', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        albumId: currentAlbumId,
+                        photos
+                    })
+                });
+                
+                if (!response.ok) throw new Error('Upload failed');
+                
+                const result = await response.json();
+                
+                photos.forEach(photo => {
+                    const photoItem = document.createElement('div');
+                    photoItem.className = 'photo-item';
+                    photoItem.innerHTML = `
+                        <img src="${photo.url}" alt="${photo.name}">
+                        <button class="delete-photo-btn" data-index="${photoGrid.children.length}" style="display: ${isDeveloperMode ? 'flex' : 'none'};">×</button>
+                    `;
+                    photoGrid.appendChild(photoItem);
+                    
+                    const deleteBtn = photoItem.querySelector('.delete-photo-btn');
+                    deleteBtn.addEventListener('click', async (e) => {
+                        e.stopPropagation();
+                        const index = parseInt(deleteBtn.getAttribute('data-index'));
+                        if (confirm('Are you sure you want to delete this photo?')) {
+                            try {
+                                const response = await fetch('/.netlify/functions/delete', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        albumId: currentAlbumId,
+                                        photoIndex: index
+                                    })
+                                });
+                                
+                                if (!response.ok) throw new Error('Delete failed');
+                                
+                                photoItem.remove();
+                                
+                                document.querySelectorAll('.delete-photo-btn').forEach((btn, i) => {
+                                    btn.setAttribute('data-index', i);
+                                });
+                            } catch (error) {
+                                console.error('Delete error:', error);
+                                alert('Failed to delete photo');
+                            }
+                        }
+                    });
+                });
+                
+                selectedFiles = [];
+                fileInput.value = '';
+                uploadPhotosBtn.style.display = 'none';
+                
+                alert(`${photos.length} photos uploaded to album!`);
+            } catch (error) {
+                console.error('Upload error:', error);
+                alert('Failed to upload photos');
+            }
+        });
+
+        document.querySelectorAll('.delete-album-btn').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                const albumCard = btn.closest('.album-card');
+                const albumId = albumCard.getAttribute('data-album');
+                const albumTitle = albumCard.querySelector('.album-title').textContent;
+                
+                if (confirm(`Are you sure you want to delete album "${albumTitle}"?`)) {
+                    try {
+                        const response = await fetch('/.netlify/functions/delete-album', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ albumId })
+                        });
+                        
+                        if (!response.ok) throw new Error('Album deletion failed');
+                        
+                        albumCard.remove();
+                        
+                        if (currentAlbumId === albumId) {
+                            photosContainer.classList.remove('active');
+                        }
+                    } catch (error) {
+                        console.error('Album deletion error:', error);
+                        alert('Failed to delete album');
+                    }
+                }
+            });
+        });
+
+        // Theme Mode
+        const themeMode = document.getElementById('themeMode');
+        const themeModeText = document.querySelector('.theme-mode-text');
+        
+        themeMode.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            
+            if (document.body.classList.contains('light-mode')) {
+                themeModeText.textContent = 'Light Mode';
+            } else {
+                themeModeText.textContent = 'Dark Mode';
+            }
+            
+            localStorage.setItem('themeMode', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+        });
+
+        if (localStorage.getItem('themeMode') === 'light') {
+            document.body.classList.add('light-mode');
+            themeModeText.textContent = 'Light Mode';
+        }
+
+        // Theme Color
+        const themeColors = document.querySelectorAll('.theme-color');
+        
+        themeColors.forEach(color => {
+            color.addEventListener('click', () => {
+                document.body.classList.remove(
+                    'theme-dark-blue',
+                    'theme-sky-blue',
+                    'theme-light-green',
+                    'theme-light-orange',
+                    'theme-pink'
+                );
+                
+                const theme = color.getAttribute('data-theme');
+                if (theme) {
+                    document.body.classList.add(`theme-${theme}`);
+                }
+                
+                themeColors.forEach(c => c.classList.remove('active'));
+                color.classList.add('active');
+                
+                localStorage.setItem('themeColor', theme || '');
+            });
+        });
+
+        const savedColor = localStorage.getItem('themeColor');
+        if (savedColor) {
+            document.body.classList.add(`theme-${savedColor}`);
+            document.querySelector(`.theme-color[data-theme="${savedColor}"]`).classList.add('active');
+        }
+
+        // Initialize
+        (async function init() {
+            const photoData = await loadPhotoData();
+            
+            Object.keys(photoData).forEach(albumId => {
+                if (!document.querySelector(`.album-card[data-album="${albumId}"]`)) {
+                    const albumCard = document.createElement('div');
+                    albumCard.className = 'album-card';
+                    albumCard.setAttribute('data-album', albumId);
+                    albumCard.innerHTML = `
+                        <i class="fas fa-images album-icon"></i>
+                        <div class="album-title">${albumId.replace('album-', 'Album ')}</div>
+                        <button class="delete-album-btn" style="display: none;">×</button>
+                    `;
+                    albumGrid.appendChild(albumCard);
+                    
+                    albumCard.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('delete-album-btn')) return;
+                        currentAlbumId = albumId;
+                        showPhotos(albumId);
+                    });
+                    
+                    const deleteBtn = albumCard.querySelector('.delete-album-btn');
+                    deleteBtn.addEventListener('click', async (e) => {
+                        e.stopPropagation();
+                        if (confirm(`Are you sure you want to delete this album?`)) {
+                            try {
+                                const response = await fetch('/.netlify/functions/delete-album', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({ albumId })
+                                });
+                                
+                                if (!response.ok) throw new Error('Album deletion failed');
+                                
+                                albumCard.remove();
+                                
+                                if (currentAlbumId === albumId) {
+                                    photosContainer.classList.remove('active');
+                                }
+                            } catch (error) {
+                                console.error('Album deletion error:', error);
+                                alert('Failed to delete album');
+                            }
+                        }
+                    });
+                }
+            });
+            
+            if (isDeveloperMode) {
+                document.querySelectorAll('.delete-album-btn').forEach(btn => {
+                    btn.style.display = 'flex';
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

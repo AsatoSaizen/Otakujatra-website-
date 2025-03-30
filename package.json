@@ -1,0 +1,11 @@
+{
+  "name": "otakujatra-gallery",
+  "version": "1.0.0",
+  "description": "OtakuJatra Photo Gallery with Netlify Functions",
+  "scripts": {
+    "start": "netlify dev"
+  },
+  "dependencies": {
+    "netlify-cli": "^12.0.0"
+  }
+}
